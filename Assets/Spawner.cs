@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     private void SpawnPipe()
     {
         float height = Random.Range(minHeight,  maxHeight);
-        Instantiate(pipePrefab, new Vector2(10, height), transform.rotation);
+        Instantiate(pipePrefab, new Vector2(13, height), transform.rotation);
         
     }
 }

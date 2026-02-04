@@ -12,7 +12,7 @@ public class PipesController : MonoBehaviour
     {
         transform.position += new Vector3(pipeSpeedx / -10f, 0f, 0f);
         
-        if (gameObject.transform.position.x < -13 && gameObject.transform.position.y < 50)
+        if (gameObject.transform.position.x < -15 && gameObject.transform.position.y < 50)
         {
             Destroy(gameObject);
         }

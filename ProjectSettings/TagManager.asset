@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - AddScore
   - Audio
+  - Particles
   layers:
   - Default
   - TransparentFX

@@ -40,7 +40,7 @@
                 {
                     "name": "",
                     "id": "9e51e724-23f9-4159-b2b5-056f223ab846",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -68,7 +68,7 @@
                 {
                     "name": "",
                     "id": "deb14180-6493-4e37-b496-0477d849aa01",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

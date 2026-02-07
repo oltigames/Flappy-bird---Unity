@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class StateManager : MonoBehaviour
     public event Action OnPauseInput;
     public event Action OnUnPauseInput;
     
+    public static bool IsPaused = false;
+    public static bool IsGameOver = false;
     private int score = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
-    public static bool isPaused;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverMenu;
+    
     
     // Reference to the generated C# Input class with player controls
     private PlayerControls input;
@@ -22,7 +26,7 @@ public class StateManager : MonoBehaviour
     
     private void Awake()
     {
-        isPaused = false;
+        IsPaused = false;
         input = new PlayerControls();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
@@ -58,12 +62,27 @@ public class StateManager : MonoBehaviour
     
     public void GameOver()
     {
-        // Debug.Log("Game Over");
+        Debug.Log("Game Over");
+        IsGameOver = true;
+        Time.timeScale = 0;
+        input.FlappyBird.Disable();
+        gameOverMenu.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Restart");
+        IsGameOver = false;
+        Time.timeScale = 1;
+        input.FlappyBird.Enable();
+        SceneManager.LoadScene("Scenes/Play Game");
+        gameOverMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     public void Pause()
     {
-        isPaused = true; 
+        IsPaused = true; 
         Time.timeScale = 0;
         
         input.FlappyBird.Disable();
@@ -74,7 +93,7 @@ public class StateManager : MonoBehaviour
     
     public void UnPause()
     {
-        isPaused = false;
+        IsPaused = false;
         Time.timeScale = 1;
         
         input.UI.Disable();

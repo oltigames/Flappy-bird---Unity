@@ -38,6 +38,14 @@ public class BirdController : MonoBehaviour
             stateManager.IncreaseScore();
         }
     }
+
+    private void FixedUpdate()
+    {
+        if (!StateManager.IsGameOver && (rb.transform.position.y < -5.5 || rb.transform.position.y > 5.5))
+        {
+            stateManager.GameOver();
+        }
+    }
     
     public void Jump()
     { 
